@@ -130,8 +130,8 @@ USE_TZ = True
 
 
 # Login/logout
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/explane'
+LOGOUT_REDIRECT_URL = '/accounts/login'
 
 
 # Static files (CSS, JavaScript, Images)
