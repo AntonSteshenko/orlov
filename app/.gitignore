@@ -1,0 +1,9 @@
+__pycache__
+assets
+media
+local_settings.py
+*.sublime*
+.DS_Store
+.idea/
+.project
+

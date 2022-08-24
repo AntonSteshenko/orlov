@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block main %}
+<form method="post">{% csrf_token %}
+    {% bootstrap_field form.employee %}
+    {% bootstrap_field form.date %}
+    {% bootstrap_field form.time_from %}
+    {% bootstrap_field form.time_to %}
+    {% bootstrap_field form.explane show_label=False %}
+    {% buttons %}
+    <button type="submit" class="btn btn-primary">
+      Submit
+    </button>
+  {% endbuttons %}
+</form>
+{% endblock %}

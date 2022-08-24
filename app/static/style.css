@@ -1,0 +1,160 @@
+/*
+    Sticky footer, background
+*/
+body {
+    /* Sticky footer */
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    /* /Sticky footer */
+    background-image: url('images/background.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.clearfix:after {
+    content: " "; /* Older browser do not support empty content */
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+
+a {
+	color:#bf360c;
+}
+
+
+/*
+    Sidenav
+*/
+.sidenav.collapsible {
+    border: none;
+}
+.sidenav li > a,
+.sidenav li > .sidenav-link {
+    padding: 0 16px;
+    color: rgba(0, 0, 0, 0.87);
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    height: 48px;
+    line-height: 48px;
+}
+.sidenav .collapsible-body li a,
+.sidenav.fixed .collapsible-body li a,
+.sidenav .collapsible-body li .sidenav-link,
+.sidenav.fixed .collapsible-body li .sidenav-link {
+    padding: 0 23.5px 0 31px;
+}
+.sidenav .collapsible-body > ul:not(.collapsible) > li.active,
+.sidenav.sidenav-fixed .collapsible-body > ul:not(.collapsible) > li.active {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+.sidenav .collapsible-body > ul:not(.collapsible) > li.active a,
+.sidenav.sidenav-fixed .collapsible-body > ul:not(.collapsible) > li.active a {
+    color: #039be5;
+}
+.sidenav .subheader {
+    cursor: initial;
+    pointer-events: none;
+    color: rgba(0, 0, 0, 0.54) !important;
+}
+.sidenav li > a > i.material-icons,
+.sidenav li > .sidenav-link > i.material-icons {
+    float: left;
+    height: 48px;
+    line-height: 48px;
+    margin: 0 32px 0 0;
+    width: 24px;
+    color: rgba(0, 0, 0, 0.54);
+}
+.sidenav li > a > i.material-icons,
+.sidenav li > a > i.material-icons:last-child,
+.sidenav li > .sidenav-link > i.material-icons,
+.sidenav li > .sidenav-link > i.material-icons:last-child {
+    margin-right: 0;
+}
+.sidenav li > a > i.material-icons:first-child,
+.sidenav li > .sidenav-link > i.material-icons:first-child {
+    margin-right: 5px;
+}
+.sidenav li > .sidenav-link a {
+    padding: 0;
+}
+.sidenav li > a .custom-badge,
+.sidenav li > .sidenav-link .custom-badge {
+    font-size: 0.7rem;
+    margin-right: 7px;
+}
+.sidenav li > a .custom-badge i.material-icons,
+.sidenav li > .sidenav-link .custom-badge i.material-icons {
+    margin-right: 2px;
+    font-size: 1rem;
+    width: auto;
+    line-height: inherit;
+}
+
+
+/*
+    Breadcrumbs
+*/
+.breadcrumbs {
+    margin: 20px 0 0;
+}
+.breadcrumbs .breadcrumb {
+    font-size: 0.9rem;
+}
+.breadcrumbs .breadcrumb:before {
+    font-size: 0.9rem;
+    color: #000;
+    vertical-align: bottom;
+}
+
+
+/*
+    Form styles, Django-material form styles overrides
+*/
+.help-block {
+    font-size: 0.85rem;
+    color: #9e9e9e;
+}
+
+.field-error {
+    font-size: 0.85rem;
+    color: #f44336;
+}
+
+
+/*
+    Materialize css overrides
+*/
+.fixed-action-btn {
+    bottom: 80px;
+}
+
+.sidelayout {
+    padding-left: 320px !important;
+    padding-right: 20px !important;
+}
+
+footer, .page-footer {
+    padding: 20px;
+    margin-top: 30px;
+}
+
+
+/*
+    Media queries
+*/
+@media (max-width: 414px) {
+    .sidelayout {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }
+}
