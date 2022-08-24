@@ -10,8 +10,11 @@
     {% bootstrap_field form.explane show_label=False %}
     {% buttons %}
     <button type="submit" class="btn btn-primary">
-      Submit
+      Сохранить
     </button>
+    <a href="{% url 'logout' %}" class="btn btn-outline-primary">
+        Выйти
+    </a>
   {% endbuttons %}
 </form>
 {% endblock %}
