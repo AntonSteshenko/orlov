@@ -1,0 +1,56 @@
+version: "3.8"
+
+services:
+  web:
+    build:
+      context: ./app
+      dockerfile: Dockerfile.prod
+    command: sh -c "python3 manage.py migrate && python3 manage.py collectstatic --no-input &&  gunicorn appmain.wsgi:application --bind 0.0.0.0:8880"
+    volumes:
+      - ./data/static:/home/app/web/staticfiles
+      - ./data/media:/home/app/web/media
+    expose:
+      - 8880
+    env_file:
+      - ./.env.prod
+    depends_on:
+      - db
+    restart: always
+
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    volumes:
+      - ./data/static:/home/app/web/staticfiles
+      - ./data/media:/home/app/web/media
+    ports:
+      - 8000:80
+    depends_on:
+      - web
+    restart: always
+
+  db:
+    image: postgres:13.0-alpine
+    volumes:
+      - ./data/db:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=orlov
+      - POSTGRES_PASSWORD=orlov2517
+      - POSTGRES_DB=orlov
+
+  pgadmin:
+    container_name: orlov_pgadmin4_container
+    image: dpage/pgadmin4:5.5
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: secret
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - "8080:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+volumes:
+  pgadmin-data:

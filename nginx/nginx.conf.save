@@ -1,0 +1,34 @@
+upstream alpi {
+    server web:8880;
+}
+
+server {
+    # порт, который будет слушать веб-сервер в ожидании запросов от пользователй
+    listen 80;
+    # доменное имя
+    server_name alpi.risorsedaffari.it 
+    charset utf-8;
+#    access_log /etc/uwsgi/log/rdprod.nginx.access.log combined;
+#    error_log /etc/uwsgi/log/rdprod.nginx.error.log error;
+    # максимальный размер загружаемых на сервер данных
+    client_max_body_size 75M;
+    # обслуживание медиа файлов и статики
+#    location /media {
+#        alias /home/risorse/rdprod/media; # расположение медиафайлов (при необх$
+#    }
+
+    location / {
+        proxy_pass http://alpi;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $host;
+        proxy_redirect off;
+    }
+
+    location /staticfiles/ {
+        alias /home/app/web/staticfiles/;
+    }
+
+    location /mediafiles/ {
+        alias /home/app/web/media/;
+    }
+}
