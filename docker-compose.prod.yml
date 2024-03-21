@@ -38,6 +38,7 @@ services:
       - POSTGRES_USER=orlov
       - POSTGRES_PASSWORD=orlov2517
       - POSTGRES_DB=orlov
+    restart: always
 
   pgadmin:
     container_name: orlov_pgadmin4_container
